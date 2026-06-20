@@ -1,5 +1,6 @@
 {
   "framework": "nextjs",
+  "name": "propertycrm",
   "crons": [
     {
       "path": "/api/cron/sla",
