@@ -54,34 +54,34 @@ export default function HomePage() {
   const [stats, setStats] = useState<any>(null);
   const [demoOpen, setDemoOpen] = useState(false);
 
-  const heroWords = [t("landing.heroWords.ticket"), t("landing.heroWords.query"), t("landing.heroWords.complaint"), t("landing.heroWords.request")];
+  const heroWords = ["property listings", "buyer inquiries", "inspection requests", "lease agreements"];
 
   const features = [
-    { num: "01", title: t("landing.features.intake.title"), desc: t("landing.features.intake.desc"), color: "blue", gradient: "from-blue-500 to-blue-600", bg: "bg-blue-50", border: "border-blue-100", text: "text-blue-600", iconBg: "bg-blue-500", bullets: (t("landing.features.intake.bullets") || "").split(",").map((s: string) => s.trim()) || ["Auto-classification", "Smart routing", "Instant response"], feed: [{ icon: "✓", text: "Classified", detail: "Billing inquiry" }, { icon: "✓", text: "Routed", detail: "Urgent issue → Tier 2" }, { icon: "✓", text: "Resolved", detail: "Password reset" }] },
-    { num: "02", title: t("landing.features.inbox.title"), desc: t("landing.features.inbox.desc"), color: "emerald", gradient: "from-emerald-500 to-emerald-600", bg: "bg-emerald-50", border: "border-emerald-100", text: "text-emerald-600", iconBg: "bg-emerald-500", bullets: (t("landing.features.inbox.bullets") || "").split(",").map((s: string) => s.trim()) || ["6 channels unified", "Real-time sync", "Full context"], feed: [{ icon: "✓", text: "WhatsApp", detail: "Order status inquiry" }, { icon: "✓", text: "Email", detail: "Refund request received" }, { icon: "✓", text: "Web Chat", detail: "New visitor from Lagos" }] },
-    { num: "03", title: t("landing.features.sentiment.title"), desc: t("landing.features.sentiment.desc"), color: "purple", gradient: "from-purple-500 to-purple-600", bg: "bg-purple-50", border: "border-purple-100", text: "text-purple-600", iconBg: "bg-purple-500", bullets: (t("landing.features.sentiment.bullets") || "").split(",").map((s: string) => s.trim()) || ["Real-time scoring", "Trend alerts", "Churn prediction"], feed: [{ icon: "✓", text: "Detected", detail: "Frustrated tone — escalated" }, { icon: "✓", text: "Scored", detail: "Positive (0.92) — closed" }, { icon: "!", text: "Alert", detail: "Negative trend on WhatsApp" }] },
-    { num: "04", title: t("landing.features.sla.title"), desc: t("landing.features.sla.desc"), color: "amber", gradient: "from-amber-500 to-amber-600", bg: "bg-amber-50", border: "border-amber-100", text: "text-amber-600", iconBg: "bg-amber-500", bullets: (t("landing.features.sla.bullets") || "").split(",").map((s: string) => s.trim()) || ["Auto-escalation", "SLA tracking", "Compliance reporting"], feed: [{ icon: "✓", text: "Enforced", detail: "SLA 2h met for SSV-1234" }, { icon: "✕", text: "Breached", detail: "SSV-1230 exceeded 4h" }, { icon: "✓", text: "Escalated", detail: "SSV-1228 → Manager" }] },
-    { num: "05", title: t("landing.features.knowledge.title"), desc: t("landing.features.knowledge.desc"), color: "cyan", gradient: "from-cyan-500 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-100", text: "text-cyan-600", iconBg: "bg-cyan-500", bullets: (t("landing.features.knowledge.bullets") || "").split(",").map((s: string) => s.trim()) || ["Auto-ingestion", "Semantic search", "AI-powered answers"], feed: [{ icon: "✓", text: "Indexed", detail: "12 new articles processed" }, { icon: "✓", text: "Matched", detail: "Q: reset password → A: #42" }, { icon: "✓", text: "Auto-resolved", detail: "Shipping policy question" }] },
-    { num: "06", title: t("landing.features.analytics.title"), desc: t("landing.features.analytics.desc"), color: "rose", gradient: "from-rose-500 to-rose-600", bg: "bg-rose-50", border: "border-rose-100", text: "text-rose-600", iconBg: "bg-rose-500", bullets: (t("landing.features.analytics.bullets") || "").split(",").map((s: string) => s.trim()) || ["Live dashboards", "Export reports", "Custom metrics"], feed: [{ icon: "✓", text: "Updated", detail: "Resolution rate: 87%" }, { icon: "!", text: "Alert", detail: "CSAT dipped below 4.0" }, { icon: "✓", text: "Report", detail: "Weekly summary generated" }] },
+    { num: "01", title: "Property Listings Management", desc: "Capture and manage property listings from multiple sources. Auto-classify by type, location, and price range for faster buyer matching.", color: "blue", gradient: "from-blue-500 to-blue-600", bg: "bg-blue-50", border: "border-blue-100", text: "text-blue-600", iconBg: "bg-blue-500", bullets: ["Auto-classification", "Smart routing", "Instant response"], feed: [{ icon: "✓", text: "Classified", detail: "3-bedroom in Lekki Phase 1" }, { icon: "✓", text: "Routed", detail: "Luxury listing → Premium agents" }, { icon: "✓", text: "Matched", detail: "Buyer profile aligned" }] },
+    { num: "02", title: "Unified Inbox", desc: "Manage all buyer and tenant communications across WhatsApp, Email, SMS, and web chat in one unified inbox.", color: "emerald", gradient: "from-emerald-500 to-emerald-600", bg: "bg-emerald-50", border: "border-emerald-100", text: "text-emerald-600", iconBg: "bg-emerald-500", bullets: ["6 channels unified", "Real-time sync", "Full context"], feed: [{ icon: "✓", text: "WhatsApp", detail: "Buyer inquiry received" }, { icon: "✓", text: "Email", detail: "Inspection request confirmed" }, { icon: "✓", text: "Web Chat", detail: "New lead from Victoria Island" }] },
+    { num: "03", title: "Buyer Sentiment Analysis", desc: "Real-time sentiment scoring on buyer communications. Detect urgency, frustration, or readiness to close deals.", color: "purple", gradient: "from-purple-500 to-purple-600", bg: "bg-purple-50", border: "border-purple-100", text: "text-purple-600", iconBg: "bg-purple-500", bullets: ["Real-time scoring", "Trend alerts", "Churn prediction"], feed: [{ icon: "✓", text: "Detected", detail: "Urgent buyer — fast-tracked" }, { icon: "✓", text: "Scored", detail: "High intent (0.95) — assigned" }, { icon: "!", text: "Alert", detail: "Negative trend on WhatsApp" }] },
+    { num: "04", title: "Inspection Scheduling", desc: "Automated scheduling and reminders for property inspections. Track attendance and gather feedback in real-time.", color: "amber", gradient: "from-amber-500 to-amber-600", bg: "bg-amber-50", border: "border-amber-100", text: "text-amber-600", iconBg: "bg-amber-500", bullets: ["Auto-escalation", "SLA tracking", "Compliance reporting"], feed: [{ icon: "✓", text: "Scheduled", detail: "Inspection for INQ-1234" }, { icon: "✕", text: "Missed", detail: "INQ-1230 buyer no-show" }, { icon: "✓", text: "Completed", detail: "INQ-1228 — positive feedback" }] },
+    { num: "05", title: "Knowledge Base", desc: "Auto-ingest property documents, FAQs, and neighborhood guides. AI-powered search for instant answers to buyer questions.", color: "cyan", gradient: "from-cyan-500 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-100", text: "text-cyan-600", iconBg: "bg-cyan-500", bullets: ["Auto-ingestion", "Semantic search", "AI-powered answers"], feed: [{ icon: "✓", text: "Indexed", detail: "12 new property docs processed" }, { icon: "✓", text: "Matched", detail: "Q: mortgage rates → A: FAQ #42" }, { icon: "✓", text: "Auto-resolved", detail: "Neighborhood info question" }] },
+    { num: "06", title: "Analytics Dashboard", desc: "Live dashboards tracking inquiries, conversions, agent performance, and deal pipeline metrics.", color: "rose", gradient: "from-rose-500 to-rose-600", bg: "bg-rose-50", border: "border-rose-100", text: "text-rose-600", iconBg: "bg-rose-500", bullets: ["Live dashboards", "Export reports", "Custom metrics"], feed: [{ icon: "✓", text: "Updated", detail: "Conversion rate: 87%" }, { icon: "!", text: "Alert", detail: "Response time dipped below SLA" }, { icon: "✓", text: "Report", detail: "Weekly pipeline summary generated" }] },
   ];
 
   const agents = [
-    { name: "Intake", desc: t("landing.agents.intake"), color: "from-blue-500 to-blue-600", gradient: "#3b82f6" },
-    { name: "Knowledge", desc: t("landing.agents.knowledge"), color: "from-emerald-500 to-emerald-600", gradient: "#10b981" },
-    { name: "Resolution", desc: t("landing.agents.resolution"), color: "from-purple-500 to-purple-600", gradient: "#8b5cf6" },
-    { name: "QA", desc: t("landing.agents.qa"), color: "from-amber-500 to-amber-600", gradient: "#f59e0b" },
-    { name: "Escalation", desc: t("landing.agents.escalation"), color: "from-red-500 to-red-600", gradient: "#ef4444" },
-    { name: "Sentiment", desc: t("landing.agents.sentiment"), color: "from-cyan-500 to-cyan-600", gradient: "#06b6d4" },
-    { name: "Analytics", desc: t("landing.agents.analytics"), color: "from-rose-500 to-rose-600", gradient: "#f43f5e" },
+    { name: "Intake", desc: "Automatically captures and classifies property inquiries from all channels", color: "from-blue-500 to-blue-600", gradient: "#3b82f6" },
+    { name: "Knowledge", desc: "AI-powered search across property docs, FAQs, and market data", color: "from-emerald-500 to-emerald-600", gradient: "#10b981" },
+    { name: "Resolution", desc: "Handles buyer questions and matches properties to client preferences", color: "from-purple-500 to-purple-600", gradient: "#8b5cf6" },
+    { name: "QA", desc: "Monitors communication quality and ensures compliance", color: "from-amber-500 to-amber-600", gradient: "#f59e0b" },
+    { name: "Escalation", desc: "Smart escalation for high-value deals and urgent buyer needs", color: "from-red-500 to-red-600", gradient: "#ef4444" },
+    { name: "Sentiment", desc: "Detects buyer mood and urgency across all conversations", color: "from-cyan-500 to-cyan-600", gradient: "#06b6d4" },
+    { name: "Analytics", desc: "Real-time insights on inquiries, conversions, and agent performance", color: "from-rose-500 to-rose-600", gradient: "#f43f5e" },
   ];
 
   const channels = [
-    { name: "WhatsApp", desc: t("landing.channels.whatsapp"), color: "from-[#25D366] to-[#128C7E]", icon: "M", stats: "whatsapp" },
-    { name: "Email", desc: t("landing.channels.email"), color: "from-[#FF6600] to-[#E55B00]", icon: "@", stats: "email" },
-    { name: "SMS", desc: t("landing.channels.sms"), color: "from-[#2196F3] to-[#1976D2]", icon: "~", stats: "sms" },
-    { name: "Web Chat", desc: t("landing.channels.web"), color: "from-[#8B5CF6] to-[#7C3AED]", icon: "W", stats: "web_chat" },
-    { name: "Messenger", desc: t("landing.channels.messenger"), color: "from-[#1877F2] to-[#0D65D9]", icon: "M", stats: "messenger" },
-    { name: "Instagram", desc: t("landing.channels.instagram"), color: "from-[#833AB4] to-[#FD1D1D]", icon: "I", stats: "instagram" },
+    { name: "WhatsApp", desc: "Most popular channel for buyer inquiries in Nigeria", color: "from-[#25D366] to-[#128C7E]", icon: "M", stats: "whatsapp" },
+    { name: "Email", desc: "Formal correspondence for lease agreements and documents", color: "from-[#FF6600] to-[#E55B00]", icon: "@", stats: "email" },
+    { name: "SMS", desc: "Inspection reminders and appointment confirmations", color: "from-[#2196F3] to-[#1976D2]", icon: "~", stats: "sms" },
+    { name: "Web Chat", desc: "Website visitors can browse and inquire about listings", color: "from-[#8B5CF6] to-[#7C3AED]", icon: "W", stats: "web_chat" },
+    { name: "Messenger", desc: "Connect with buyers on Facebook Messenger", color: "from-[#1877F2] to-[#0D65D9]", icon: "M", stats: "messenger" },
+    { name: "Instagram", desc: "Property showcase inquiries via Instagram DMs", color: "from-[#833AB4] to-[#FD1D1D]", icon: "I", stats: "instagram" },
   ];
 
   useEffect(() => {
@@ -104,7 +104,6 @@ export default function HomePage() {
     <PublicShell>
       {/* ═══════ HERO ═══════ */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #0b1a2e 0%, #0f2340 40%, #142d50 70%, #1a365d 100%)" }}>
-        {/* Animated orbs */}
         <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] bg-blue-500/15 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px]" style={{ animation: "float 12s ease-in-out infinite" }} />
         <div className="absolute top-[30%] left-[20%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[80px]" style={{ animation: "float 15s ease-in-out infinite reverse" }} />
@@ -115,40 +114,38 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-[13px] font-semibold text-blue-200 uppercase tracking-wider">{t("hero.badge")}</span>
+                <span className="text-[13px] font-semibold text-blue-200 uppercase tracking-wider">Property Support Platform</span>
               </div>
               <h1 className="text-[44px] sm:text-[58px] lg:text-[72px] font-extrabold leading-[0.95] tracking-tight text-white mb-6">
-                {t("hero.title1")}{" "}
+                Automate Your{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-blue-300 italic">{heroWords[wordIndex]}</span>
                   <span className="absolute bottom-1 left-0 w-full h-3 bg-blue-400/20 rounded-sm" />
                 </span>
-                <br />{t("hero.title2")}
+                <br />with AI
               </h1>
               <p className="text-[17px] text-blue-100/70 max-w-lg mb-10 leading-relaxed">
-                {t("hero.desc")}
+                The AI-powered platform that handles buyer inquiries, schedules inspections, matches properties to clients, and closes deals faster.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/support" className="px-8 py-4 bg-white text-gray-900 rounded-2xl text-[15px] font-semibold hover:bg-gray-50 transition-all text-center shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
-                  {t("hero.cta")}
+                  Get Started Free
                 </Link>
                 <button onClick={() => setDemoOpen(true)} className="px-8 py-4 bg-transparent border-2 border-blue-300/30 text-blue-200 rounded-2xl text-[15px] font-semibold hover:bg-white/5 transition-all text-center hover:scale-[1.02] active:scale-[0.98]">
-                  {t("hero.demo")}
+                  Book a Demo
                 </button>
               </div>
             </div>
 
-            {/* Dashboard Preview */}
             <div className="hidden lg:block relative">
               <div className="absolute inset-0 bg-blue-500/5 rounded-3xl blur-3xl" />
               <div className="relative bg-white/[0.06] backdrop-blur-xl rounded-3xl border border-white/[0.08] p-6 space-y-4 shadow-2xl shadow-black/20">
-                {/* Stats */}
                 <div className="grid grid-cols-4 gap-3">
                   {[
-                    { label: "Open", value: ticket.open, color: "text-blue-300", bg: "bg-blue-500/10" },
+                    { label: "New Inquiries", value: ticket.open, color: "text-blue-300", bg: "bg-blue-500/10" },
                     { label: "Pending", value: ticket.pending, color: "text-amber-300", bg: "bg-amber-500/10" },
                     { label: "Escalated", value: ticket.escalated, color: "text-red-300", bg: "bg-red-500/10" },
-                    { label: "Resolved", value: ticket.resolved, color: "text-emerald-300", bg: "bg-emerald-500/10" },
+                    { label: "Closed Deals", value: ticket.resolved, color: "text-emerald-300", bg: "bg-emerald-500/10" },
                   ].map((s) => (
                     <div key={s.label} className={`text-center p-3 rounded-xl ${s.bg} border border-white/[0.05]`}>
                       <div className={`text-xl font-extrabold ${s.color}`}>{s.value}</div>
@@ -156,7 +153,6 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-                {/* Recent tickets */}
                 <div className="space-y-2">
                   {recentTickets.slice(0, 3).map((rt: any, i: number) => (
                     <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.04] border border-white/[0.05]">
@@ -169,7 +165,7 @@ export default function HomePage() {
                         <span className="text-xs font-mono text-blue-300/80">{rt.ticket_number}</span>
                         <span className="text-xs text-gray-300 truncate">{rt.subject}</span>
                       </div>
-                      <span className="text-[10px] text-gray-500 shrink-0 ml-2">{rt.customer_name || "Customer"}</span>
+                      <span className="text-[10px] text-gray-500 shrink-0 ml-2">{rt.customer_name || "Client"}</span>
                     </div>
                   ))}
                   {recentTickets.length === 0 && (
@@ -179,7 +175,6 @@ export default function HomePage() {
                     </div>
                   )}
                 </div>
-                {/* Channels */}
                 <div className="flex gap-2 flex-wrap">
                   {["whatsapp", "email", "web_chat", "sms", "messenger", "instagram"].map((ch) => (
                     <span key={ch} className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.05] text-[11px] text-gray-300 capitalize">
@@ -198,10 +193,10 @@ export default function HomePage() {
       <RevealSection className="relative -mt-12 z-10 max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { label: t("stats.autoResolution"), value: ticket.autoResolutionRate || 67, suffix: "%", gradient: "from-blue-500 to-blue-600", icon: "⚡", iconBg: "bg-blue-500" },
-            { label: t("stats.avgResponse"), value: 42, suffix: "s", gradient: "from-emerald-500 to-emerald-600", icon: "⏱", iconBg: "bg-emerald-500" },
-            { label: t("stats.uptime"), value: 99.99, suffix: "%", gradient: "from-purple-500 to-purple-600", icon: "🛡", iconBg: "bg-purple-500" },
-            { label: t("stats.customers"), value: customer.total || 16, suffix: "+", gradient: "from-amber-500 to-amber-600", icon: "👥", iconBg: "bg-amber-500" },
+            { label: "Inquiry Auto-Response", value: ticket.autoResolutionRate || 67, suffix: "%", gradient: "from-blue-500 to-blue-600", icon: "⚡", iconBg: "bg-blue-500" },
+            { label: "Avg Response Time", value: 42, suffix: "s", gradient: "from-emerald-500 to-emerald-600", icon: "⏱", iconBg: "bg-emerald-500" },
+            { label: "Uptime", value: 99.99, suffix: "%", gradient: "from-purple-500 to-purple-600", icon: "🛡", iconBg: "bg-purple-500" },
+            { label: "Active Clients", value: customer.total || 16, suffix: "+", gradient: "from-amber-500 to-amber-600", icon: "👥", iconBg: "bg-amber-500" },
           ].map((stat, i) => (
             <RevealSection key={stat.label} delay={i * 100}>
               <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
@@ -225,7 +220,7 @@ export default function HomePage() {
         <RevealSection>
           <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <div className="text-center mb-14">
-              <p className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.25em] mb-4">{t("trusted.title")}</p>
+              <p className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.25em] mb-4">Trusted by Leading Property Companies</p>
               <div className="flex items-center justify-center gap-4">
                 <div className="h-px w-16 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
                 <div className="h-1 w-1 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50" />
@@ -234,18 +229,18 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-[1px] rounded-2xl overflow-hidden shadow-lg shadow-gray-200/40 border border-white/60 backdrop-blur-sm">
               {[
-                { name: "Paystack", accent: "hover:shadow-blue-500/5" },
-                { name: "Kuda", accent: "hover:shadow-blue-500/5" },
-                { name: "PiggyVest", accent: "hover:shadow-green-500/5" },
-                { name: "Chipper", accent: "hover:shadow-purple-500/5" },
-                { name: "Moniepoint", accent: "hover:shadow-blue-500/5" },
-                { name: "FairMoney", accent: "hover:shadow-amber-500/5" },
-                { name: "Glovo", accent: "hover:shadow-green-500/5" },
-                { name: "Wema Bank", accent: "hover:shadow-red-500/5" },
-                { name: "Arm", accent: "hover:shadow-indigo-500/5" },
-                { name: "Tolaram", accent: "hover:shadow-orange-500/5" },
-                { name: "Chowdeck", accent: "hover:shadow-green-500/5" },
-                { name: "Yellow Card", accent: "hover:shadow-yellow-500/5" },
+                { name: "Dangote Properties", accent: "hover:shadow-blue-500/5" },
+                { name: "Mixta Nigeria", accent: "hover:shadow-blue-500/5" },
+                { name: "Julius Berger", accent: "hover:shadow-green-500/5" },
+                { name: "Lekki Gardens", accent: "hover:shadow-purple-500/5" },
+                { name: "Eko Atlantic", accent: "hover:shadow-blue-500/5" },
+                { name: "Cosgrove", accent: "hover:shadow-amber-500/5" },
+                { name: "Landwey", accent: "hover:shadow-green-500/5" },
+                { name: "Northcourt", accent: "hover:shadow-red-500/5" },
+                { name: "Sujimoto", accent: "hover:shadow-indigo-500/5" },
+                { name: "PropertyPro", accent: "hover:shadow-orange-500/5" },
+                { name: "BuyLetLive", accent: "hover:shadow-green-500/5" },
+                { name: "Fiede Properties", accent: "hover:shadow-yellow-500/5" },
               ].map((company) => (
                 <div key={company.name} className={`flex items-center justify-center h-[78px] bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 group cursor-default ${company.accent} hover:shadow-lg`}>
                   <span className="text-[13px] font-semibold text-gray-400/80 tracking-wide group-hover:text-gray-500 group-hover:tracking-wider transition-all duration-300">{company.name}</span>
@@ -254,7 +249,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center justify-center mt-10">
               <Link href="/about" className="inline-flex items-center gap-2 text-[12px] font-medium text-gray-400 hover:text-gray-600 transition-colors duration-300 group px-5 py-2.5 rounded-full border border-gray-200/60 hover:border-gray-300/60 hover:bg-white/50 backdrop-blur-sm">
-                {t("trusted.readAll")}
+                View all customers
                 <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </Link>
             </div>
@@ -265,17 +260,17 @@ export default function HomePage() {
       {/* ═══════ THE PROBLEM ═══════ */}
       <RevealSection className="py-24 section-mesh">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
-          <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("problem.label")}</p>
+          <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">The Challenge</p>
           <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight mb-4 leading-[1.05]">
-            {t("problem.title")}
+            Property inquiries are falling through the cracks
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto mb-16">{t("problem.desc")}</p>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto mb-16">Manual processes, missed buyer messages, and slow response times are costing you deals.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "!", title: t("landing.problems.triage.title"), desc: t("landing.problems.triage.desc"), gradient: "from-blue-500 to-blue-600", topClass: "card-top-blue" },
-              { icon: "~", title: t("landing.problems.escalation.title"), desc: t("landing.problems.escalation.desc"), gradient: "from-rose-500 to-rose-600", topClass: "card-top-rose" },
-              { icon: "●", title: t("landing.problems.resolution.title"), desc: t("landing.problems.resolution.desc"), gradient: "from-amber-500 to-amber-600", topClass: "card-top-amber" },
-              { icon: "↻", title: t("landing.problems.fallback.title"), desc: t("landing.problems.fallback.desc"), gradient: "from-gray-400 to-gray-500", topClass: "" },
+              { icon: "!", title: "Lost Buyer Leads", desc: "Inquiries get buried in inboxes and WhatsApp messages. Buyers move on to competitors.", gradient: "from-blue-500 to-blue-600", topClass: "card-top-blue" },
+              { icon: "~", title: "Slow Inspection Scheduling", desc: "Manual scheduling causes delays. Buyers expect same-day or next-day property viewings.", gradient: "from-rose-500 to-rose-600", topClass: "card-top-rose" },
+              { icon: "●", title: "Poor Buyer Matching", desc: "Agents waste time showing wrong properties. No smart matching between buyers and listings.", gradient: "from-amber-500 to-amber-600", topClass: "card-top-amber" },
+              { icon: "↻", title: "No Follow-up System", desc: "Hot leads go cold. No automated reminders for price drops or new listings that match buyer criteria.", gradient: "from-gray-400 to-gray-500", topClass: "" },
             ].map((card, i) => (
               <RevealSection key={card.title} delay={i * 100}>
                 <div className={`text-left p-8 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300 group bg-white ${card.topClass}`}>
@@ -295,12 +290,12 @@ export default function HomePage() {
       <section className="relative py-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #0b1a2e 0%, #0f2340 40%, #142d50 70%, #1a365d 100%)" }}>
         <div className="absolute top-[-30%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
         <div className="max-w-[1200px] mx-auto px-6 text-center relative">
-          <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">{t("solution.label")}</p>
+          <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">The Solution</p>
           <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight text-white mb-6 leading-[1.05]">
-            {t("solution.title")}
+            PropertyCRM: Your AI Property Concierge
           </h2>
           <p className="text-blue-100/70 text-lg max-w-2xl mx-auto leading-relaxed">
-            {t("solution.desc")}
+            Automate buyer interactions, schedule inspections, match properties to client preferences, and close deals faster with AI-powered property support.
           </p>
         </div>
       </section>
@@ -309,11 +304,11 @@ export default function HomePage() {
       <section id="features" className="relative py-20">
         <div className="max-w-[1200px] mx-auto px-6 relative">
           <RevealSection className="text-center mb-16">
-            <p className="text-[11px] font-bold text-blue-500 uppercase tracking-[0.25em] mb-4">{t("features.label")}</p>
+            <p className="text-[11px] font-bold text-blue-500 uppercase tracking-[0.25em] mb-4">Features</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight leading-[1.05]">
-              {t("features.title")}
+              Everything You Need to Close Deals Faster
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">{t("features.subtitle")}</p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">From lead capture to deal closure — manage every step of the property transaction.</p>
           </RevealSection>
 
           <div className="space-y-8">
@@ -382,11 +377,11 @@ export default function HomePage() {
       <section id="channels" className="py-24 border-t border-gray-100/80 section-mesh-blue">
         <div className="max-w-[1200px] mx-auto px-6">
           <RevealSection className="text-center mb-16">
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("channels.label")}</p>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Channels</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight leading-[1.05]">
-              {t("channels.title")}
+              Meet Your Buyers Where They Are
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">{t("channels.desc")}</p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">Respond to inquiries from WhatsApp, Email, SMS, Instagram DMs, and more — all in one inbox.</p>
           </RevealSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {channels.map((ch, i) => (
@@ -400,7 +395,7 @@ export default function HomePage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                        <span className="text-xs text-gray-400 font-medium">{channelCounts[ch.stats] || 0} tickets</span>
+                        <span className="text-xs text-gray-400 font-medium">{channelCounts[ch.stats] || 0} inquiries</span>
                       </div>
                     </div>
                     <h3 className="text-lg font-bold mb-1">{ch.name}</h3>
@@ -417,11 +412,11 @@ export default function HomePage() {
       <section id="agents" className="py-24 border-t border-gray-100/80 section-mesh-purple">
         <div className="max-w-[1200px] mx-auto px-6">
           <RevealSection className="text-center mb-16">
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("agents.label")}</p>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">AI Agents</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight leading-[1.05]">
-              {t("agents.title")}
+              Your Virtual Property Team
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">{t("agents.desc")}</p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mt-4">Specialized AI agents that handle every aspect of property support — from lead capture to deal closure.</p>
           </RevealSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {agents.map((agent, i) => (
@@ -446,17 +441,17 @@ export default function HomePage() {
       <section className="py-24 border-t border-gray-100/80 section-mesh-emerald">
         <div className="max-w-[1200px] mx-auto px-6">
           <RevealSection className="text-center mb-16">
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("howItWorks.label")}</p>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">How It Works</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight leading-[1.05]">
-              {t("howItWorks.title")}
+              From Inquiry to Deal in 4 Steps
             </h2>
           </RevealSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { num: "01", icon: "↓", title: t("landing.steps.ingest.title"), desc: t("landing.steps.ingest.desc"), gradient: "from-blue-500 to-blue-600" },
-              { num: "02", icon: "⚡", title: t("landing.steps.classify.title"), desc: t("landing.steps.classify.desc"), gradient: "from-emerald-500 to-emerald-600" },
-              { num: "03", icon: "↗", title: t("landing.steps.resolve.title"), desc: t("landing.steps.resolve.desc"), gradient: "from-purple-500 to-purple-600" },
-              { num: "04", icon: "✓", title: t("landing.steps.escalate.title"), desc: t("landing.steps.escalate.desc"), gradient: "from-amber-500 to-amber-600" },
+              { num: "01", icon: "↓", title: "Capture Lead", desc: "Buyer inquires via WhatsApp, web, or social media. Lead is automatically captured.", gradient: "from-blue-500 to-blue-600" },
+              { num: "02", icon: "⚡", title: "Classify & Route", desc: "AI classifies inquiry type, urgency, and budget. Routes to the right agent or listing.", gradient: "from-emerald-500 to-emerald-600" },
+              { num: "03", icon: "↗", title: "Match & Schedule", desc: "Smart matching pairs buyer with best-fit properties. Schedule inspection with one click.", gradient: "from-purple-500 to-purple-600" },
+              { num: "04", icon: "✓", title: "Close Deal", desc: "Follow up, negotiate, and close. All communication tracked and accessible.", gradient: "from-amber-500 to-amber-600" },
             ].map((step, i) => (
               <RevealSection key={step.num} delay={i * 100}>
                 <div className="p-8 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300 group h-full bg-white relative overflow-hidden">
@@ -478,11 +473,11 @@ export default function HomePage() {
       <section className="py-24 border-t border-gray-100/80">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <RevealSection>
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("security.label")}</p>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Security & Compliance</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight mb-4 leading-[1.05]">
-              {t("security.title")}
+              Your Data is Protected
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-12">{t("security.desc")}</p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-12">Enterprise-grade security to keep your client and property data safe.</p>
             <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-0 border border-gray-100 rounded-2xl overflow-hidden max-w-4xl mx-auto">
               {["SOC 2", "ISO 27001", "GDPR", "NDPC", "PCI DSS", "HIPAA", "CSA"].map((c) => (
                 <div key={c} className="flex items-center justify-center h-20 border-r border-b border-gray-100 last:border-r-0 hover:bg-gray-50/50 transition-colors">
@@ -498,11 +493,11 @@ export default function HomePage() {
       <section className="py-24 border-t border-gray-100/80 section-mesh">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <RevealSection>
-            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">{t("integrations.label")}</p>
+            <p className="text-sm font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Integrations</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight mb-4 leading-[1.05]">
-              {t("integrations.title")}
+              Connects With Your Existing Tools
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-12">{t("integrations.desc")}</p>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-12">Integrate with your CRM, payment gateways, and marketing tools.</p>
             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-0 border border-gray-100 rounded-2xl overflow-hidden bg-white max-w-4xl mx-auto mb-8">
               {["WhatsApp", "Zapier", "Instagram", "Twilio", "Slack", "Gmail", "Mailgun", "Amazon SNS", "Firebase", "Stripe", "HubSpot", "Telegram"].map((name) => (
                 <div key={name} className="flex items-center justify-center h-20 border-r border-b border-gray-100 last:border-r-0 hover:bg-gray-50/50 transition-colors">
@@ -510,9 +505,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="text-gray-400 text-sm mb-6">{t("integrations.noTool")}</p>
+            <p className="text-gray-400 text-sm mb-6">Don't see your tool? We have a REST API for custom integrations.</p>
             <Link href="/support" className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-gray-200 rounded-xl text-[15px] font-semibold text-gray-700 hover:border-gray-300 hover:bg-white transition-all">
-              {t("integrations.apiCta")} <span>→</span>
+              View API Docs <span>→</span>
             </Link>
           </RevealSection>
         </div>
@@ -524,17 +519,17 @@ export default function HomePage() {
         <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
         <div className="max-w-[800px] mx-auto px-6 text-center relative">
           <RevealSection>
-            <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">{t("cta.label")}</p>
+            <p className="text-sm font-bold text-blue-300 uppercase tracking-[0.2em] mb-4">Get Started</p>
             <h2 className="text-[34px] sm:text-[46px] font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
-              {t("cta.title")}
+              Ready to Close More Deals?
             </h2>
-            <p className="text-blue-100/70 text-lg mb-10">{t("cta.desc")}</p>
+            <p className="text-blue-100/70 text-lg mb-10">Join leading property companies in Nigeria using PropertyCRM to automate buyer support.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => setDemoOpen(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-gray-900 rounded-2xl text-[15px] font-semibold hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]">
-                {t("cta.book")}
+                Book a Demo
               </button>
               <Link href="/support" className="inline-flex items-center justify-center gap-2 px-10 py-4 border-2 border-blue-300/30 text-blue-200 rounded-2xl text-[15px] font-semibold hover:bg-white/5 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                {t("cta.start")}
+                Start Free Trial
               </Link>
             </div>
           </RevealSection>
