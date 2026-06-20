@@ -42,8 +42,8 @@ export async function POST(req: Request) {
       response = "I understand you'd like to speak with a human agent. I'm connecting you now. In the meantime, you can also reach us directly:\n\n📧 Email: info@glopresc.com\n📱 WhatsApp: +2347082529729\n\nOur team typically responds within 2 minutes during business hours.";
     } else if (fuzzyMatch(lowerMsg, ["billing", "invoice", "payment", "charge", "refund"])) {
       response = "For billing questions, I can help! Here's what I need to know:\n\n• Do you have your invoice number or account email?\n• What specific billing issue are you experiencing?\n\nCommon billing topics:\n- Invoice discrepancies\n- Payment method updates\n- Subscription changes\n- Refund requests\n\nPlease share the details and I'll look into it for you.";
-    } else if (fuzzyMatch(lowerMsg, ["hello", "hi", "hey", "good morning", "good afternoon"])) {
-      response = "Hello! Welcome to SSV Support. I'm here to help you with any questions about our platform.\n\nI can assist with:\n• Account and billing questions\n• Technical support\n• Feature inquiries\n• Ticket creation\n\nHow can I help you today?";
+    } else     if (fuzzyMatch(lowerMsg, ["hello", "hi", "hey", "good morning", "good afternoon"])) {
+      response = "Hello! Welcome to PropertyCRM Support. I'm here to help you with any questions about our platform.\n\nI can assist with:\n• Property inquiries\n• Inspection scheduling\n• Pricing and availability\n• Ticket creation\n\nHow can I help you today?";
     } else {
       response = "Thank you for reaching out! I'm here to help.\n\nI can assist you with:\n• Account and password issues\n• Billing and invoice questions\n• Technical support\n• Creating support tickets\n\nCould you tell me more about what you need help with? For immediate assistance, you can also reach us at:\n\n📧 info@glopresc.com\n📱 WhatsApp: +2347082529729";
     }
@@ -66,17 +66,17 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: openai("gpt-4o"),
-    system: `You are SSV AI, the intelligent customer support assistant for SSV CRM.
+    system: `You are Property AI, the intelligent property support assistant for PropertyCRM.
 
-Your role is to help customers resolve their issues quickly and accurately.
+Your role is to help clients resolve their property issues quickly and accurately.
 
 Guidelines:
 - Be professional, empathetic, and helpful
-- Use the customer's name when available
+- Use the client's name when available
 - Provide clear, actionable solutions
 - If you can't resolve the issue, explain why and offer alternatives
 - Keep responses concise but thorough
-- You work for a company called SSV
+- You work for a company called PropertyCRM
 - All currency is in Naira (₦)
 - Contact email: info@glopresc.com
 - WhatsApp: +2347082529729
@@ -156,9 +156,9 @@ Always verify facts before providing solutions. If uncertain, escalate to a huma
         },
       }),
       lookupTicket: tool({
-        description: "Look up a ticket by its ticket number (e.g. SSV-1234)",
+        description: "Look up a ticket by its ticket number (e.g. PCR-1234)",
         inputSchema: z.object({
-          ticketNumber: z.string().describe("Ticket number like SSV-1234"),
+          ticketNumber: z.string().describe("Ticket number like PCR-1234"),
         }),
         execute: async ({ ticketNumber }) => {
           try {
@@ -206,7 +206,7 @@ Always verify facts before providing solutions. If uncertain, escalate to a huma
           try {
             const count = await sql`SELECT COUNT(*) as cnt FROM tickets`;
             const num = Number(count[0].cnt) + 1235;
-            const ticketNumber = `SSV-${num}`;
+            const ticketNumber = `PCR-${num}`;
             const slaDue = new Date(Date.now() + (priority === "urgent" ? 3600000 : priority === "high" ? 7200000 : 14400000));
             await sql`
               INSERT INTO tickets (ticket_number, subject, message, status, priority, channel, sla_status, sla_due, tags)

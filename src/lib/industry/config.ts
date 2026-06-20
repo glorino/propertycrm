@@ -44,18 +44,18 @@ export interface IndustryConfig {
 export const industries: Record<IndustrySlug, IndustryConfig> = {
   ssv: {
     slug: "ssv",
-    name: "SSV CRM",
-    tagline: "AI-Powered Customer Support Platform",
+    name: "PropertyCRM",
+    tagline: "Smart Property Support Platform",
     logo: "/logo.svg",
     favicon: "/favicon.svg",
     colors: {
-      primary: "#4f46e5",
-      primaryLight: "#818cf8",
-      primaryDark: "#3730a3",
-      secondary: "#0ea5e9",
-      accent: "#06b6d4",
-      gradient: "from-blue-600 to-indigo-700",
-      gradientCSS: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
+      primary: "#059669",
+      primaryLight: "#34d399",
+      primaryDark: "#047857",
+      secondary: "#f59e0b",
+      accent: "#10b981",
+      gradient: "from-emerald-600 to-teal-700",
+      gradientCSS: "linear-gradient(135deg, #059669 0%, #0d9488 100%)",
     },
     contact: {
       email: "info@glopresc.com",
@@ -64,51 +64,58 @@ export const industries: Record<IndustrySlug, IndustryConfig> = {
       website: "supportflow-ai-six.vercel.app",
     },
     chatbot: {
-      name: "SSV AI",
-      personality: "professional support specialist",
-      systemPrompt: `You are SSV AI, the intelligent customer support assistant for SSV CRM.
-Your role is to help customers resolve their issues quickly and accurately.
+      name: "Property AI",
+      personality: "real estate expert",
+      systemPrompt: `You are Property AI, the intelligent support assistant for PropertyCRM.
+You specialize in real estate inquiries, property listings, inspections, and transactions.
 Guidelines:
-- Be professional, empathetic, and helpful
-- Use the customer's name when available
-- Provide clear, actionable solutions
-- If you can't resolve the issue, explain why and offer alternatives
-- Keep responses concise but thorough
-- You work for a company called SSV
+- Be professional and knowledgeable about properties
+- Help customers find properties that match their needs
+- Schedule inspections and viewings
+- Provide pricing and availability information
+- Handle negotiation inquiries professionally
 - All currency is in Naira (₦)
 - Contact email: info@glopresc.com
 - WhatsApp: +2347082529729`,
       quickActions: [
-        { label: "Reset my password", icon: "🔑" },
-        { label: "Check order status", icon: "📦" },
-        { label: "Talk to a human", icon: "👤" },
-        { label: "Billing question", icon: "💳" },
+        { label: "Search properties", icon: "🏠" },
+        { label: "Schedule inspection", icon: "📅" },
+        { label: "Get pricing", icon: "💰" },
+        { label: "Talk to agent", icon: "👤" },
       ],
       fallbackResponses: {
         greeting:
-          "Hello! Welcome to SSV Support. I'm here to help you with any questions about our platform.\n\nI can assist with:\n• Account and billing questions\n• Technical support\n• Feature inquiries\n• Ticket creation\n\nHow can I help you today?",
-        password:
-          "To reset your password:\n\n1. Go to supportflow-ai-six.vercel.app/forgot-password\n2. Enter your email address\n3. Check your email for the reset link\n4. Click the link and create a new password\n\nIf you still can't access your account, please email us at info@glopresc.com.",
+          "Hello! Welcome to PropertyCRM. I'm your property support assistant.\n\nI can help you with:\n• Property search and listings\n• Scheduling inspections\n• Pricing and availability\n• Negotiation support\n\nWhat type of property are you looking for?",
+        property:
+          "I'd be happy to help you find the perfect property! Could you tell me:\n\n• What type of property? (apartment, house, land, commercial)\n• Preferred location?\n• Budget range?\n• Number of bedrooms?\n\nI'll find the best options for you.",
+        inspection:
+          "Great! I can help you schedule an inspection. Please provide:\n\n• Property ID or address\n• Preferred date and time\n• Your contact information\n\nOur agent will confirm within 30 minutes.",
+        pricing:
+          "Our properties range from ₦15,000,000 to ₦500,000,000 depending on location and type.\n\nWould you like me to:\n• Send you available listings in your budget\n• Schedule a viewing\n• Connect you with an agent for negotiation",
         human:
-          "I understand you'd like to speak with a human agent. I'm connecting you now.\n\n📧 Email: info@glopresc.com\n📱 WhatsApp: +2347082529729\n\nOur team typically responds within 2 minutes during business hours.",
-        billing:
-          "For billing questions, I can help! Here's what I need to know:\n\n• Do you have your invoice number or account email?\n• What specific billing issue are you experiencing?\n\nPlease share the details and I'll look into it for you.",
+          "I'll connect you with one of our property specialists right away.\n\n📧 Email: info@glopresc.com\n📱 WhatsApp: +2347082529729\n\nOur agents are available 8am-8pm daily.",
         default:
-          "Thank you for reaching out! I'm here to help.\n\nI can assist you with:\n• Account and password issues\n• Billing and invoice questions\n• Technical support\n• Creating support tickets\n\nCould you tell me more about what you need help with?",
+          "Thank you for your interest in PropertyCRM! I can help you with:\n\n• Property search and recommendations\n• Scheduling inspections\n• Pricing information\n• Agent connection\n\nHow can I assist you today?",
       },
     },
     ticketCategories: [
-      "general",
-      "technical",
-      "billing",
-      "feature-request",
-      "bug-report",
+      "inquiry",
+      "inspection",
+      "negotiation",
+      "closing",
+      "maintenance",
+      "complaint",
     ],
-    whatsappTemplates: ["ticket_update", "ticket_created", "verification_code"],
-    dashboardTitle: "SSV CRM Dashboard",
-    metaTitle: "SSV CRM — AI-Powered Customer Support Platform",
+    whatsappTemplates: [
+      "property_alert",
+      "inspection_reminder",
+      "price_update",
+      "agent_intro",
+    ],
+    dashboardTitle: "PropertyCRM Dashboard",
+    metaTitle: "PropertyCRM — Smart Property Support Platform",
     metaDescription:
-      "AI-powered customer support platform. Unify every channel with intelligent agents.",
+      "AI-powered real estate support. Find properties, schedule inspections, and connect with agents.",
   },
 
   realestate: {
@@ -493,13 +500,13 @@ Guidelines:
   },
 };
 
-export function getIndustry(slug: IndustrySlug = "ssv"): IndustryConfig {
-  return industries[slug] || industries.ssv;
+export function getIndustry(slug: IndustrySlug = "realestate"): IndustryConfig {
+  return industries[slug] || industries.realestate;
 }
 
 export function getIndustryFromEnv(): IndustrySlug {
   if (typeof process !== "undefined" && process.env) {
-    return (process.env.INDUSTRY_SLUG as IndustrySlug) || "ssv";
+    return (process.env.INDUSTRY_SLUG as IndustrySlug) || "realestate";
   }
-  return "ssv";
+  return "realestate";
 }
