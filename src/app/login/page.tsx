@@ -7,10 +7,10 @@ import { LangToggle } from "@/components/lang-toggle";
 import { useLang } from "@/lib/i18n/context";
 
 const demoLogins = [
-  { email: "admin@propertycrm.com", password: "admin123", role: "Super Admin", name: "Alex Johnson", avatar: "AJ", gradient: "from-violet-500 to-indigo-600" },
-  { email: "sarah@propertycrm.com", password: "demo123", role: "Manager", name: "Sarah Kim", avatar: "SK", gradient: "from-emerald-500 to-teal-600" },
-  { email: "tom@propertycrm.com", password: "demo123", role: "Agent", name: "Tom Chen", avatar: "TC", gradient: "from-blue-500 to-cyan-600" },
-  { email: "viewer@propertycrm.com", password: "demo123", role: "Viewer", name: "Jordan Lee", avatar: "JL", gradient: "from-gray-500 to-slate-600" },
+  { email: "adebayo@propertycrm.com", password: "admin123", role: "Super Admin", name: "Adebayo Okafor", avatar: "AO", gradient: "from-violet-500 to-indigo-600" },
+  { email: "folake@propertycrm.com", password: "demo123", role: "Manager", name: "Folake Adeyemi", avatar: "FA", gradient: "from-emerald-500 to-teal-600" },
+  { email: "ngozi@propertycrm.com", password: "demo123", role: "Agent", name: "Ngozi Nwosu", avatar: "NN", gradient: "from-blue-500 to-cyan-600" },
+  { email: "kemi@propertycrm.com", password: "demo123", role: "Viewer", name: "Kemi Oladipo", avatar: "KO", gradient: "from-gray-500 to-slate-600" },
 ];
 
 export default function LoginPage() {
