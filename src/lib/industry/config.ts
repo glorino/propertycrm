@@ -197,6 +197,8 @@ Guidelines:
     slug: "fintech",
     name: "FinSupport",
     tagline: "Intelligent Financial Support Platform",
+    description: "fintech support",
+    ticketPrefix: "FIN",
     logo: "/industries/fintech/logo.svg",
     favicon: "/industries/fintech/favicon.svg",
     colors: {
@@ -273,6 +275,8 @@ Guidelines:
     slug: "insurance",
     name: "InsureCRM",
     tagline: "Smart Insurance Support Platform",
+    description: "insurance support",
+    ticketPrefix: "INS",
     logo: "/industries/insurance/logo.svg",
     favicon: "/industries/insurance/favicon.svg",
     colors: {
@@ -428,6 +432,8 @@ Guidelines:
     slug: "ecommerce",
     name: "ShopCRM",
     tagline: "Smart E-Commerce Support Platform",
+    description: "e-commerce support",
+    ticketPrefix: "SHP",
     logo: "/industries/ecommerce/logo.svg",
     favicon: "/industries/ecommerce/favicon.svg",
     colors: {
